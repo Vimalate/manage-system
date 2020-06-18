@@ -1,7 +1,7 @@
 /*
  * @Author: Vimalakirti
  * @Date: 2020-06-18 23:34:42
- * @LastEditTime: 2020-06-19 00:09:58
+ * @LastEditTime: 2020-06-19 00:39:45
  * @Description:
  * @FilePath: \vue-manage-system\src\router\index.js
  */
@@ -17,12 +17,11 @@ const routes = [
   //   name: "Home",
   //   component: Home
   // }
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
+  {
+    path: "/",
+    name: "About",
+    component: () => import(/* webpackChunkName: "Main" */ "../views/Main.vue")
+  }
 ];
 
 const router = new VueRouter({
