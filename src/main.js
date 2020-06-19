@@ -1,3 +1,11 @@
+/*
+ * @Author: Vimalakirti
+ * @Date: 2020-06-18 23:34:42
+ * @LastEditTime: 2020-06-19 17:27:27
+ * @Description:
+ * @FilePath: \vue-manage-system\src\main.js
+ */
+
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";

@@ -1,14 +1,17 @@
 /*
  * @Author: Vimalakirti
  * @Date: 2020-06-18 23:34:42
- * @LastEditTime: 2020-06-19 17:17:13
+ * @LastEditTime: 2020-06-19 17:28:07
  * @Description:
  * @FilePath: \vue-manage-system\src\router\index.js
  */
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+};
 Vue.use(VueRouter);
 
 const routes = [

@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 16:38:22
- * @LastEditTime: 2020-06-19 17:04:50
+ * @LastEditTime: 2020-06-19 18:00:59
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonTab.vue
 -->
@@ -14,6 +14,8 @@
       :closable="tag.name !== 'home'"
       :disable-transitions="false"
       @close="handleClose(tag)"
+      @click="changeMenu(tag)"
+      :effect="$route.name === tag.name ? 'dark' : 'plain'"
     >
       {{ tag.label }}
     </el-tag>
@@ -30,6 +32,7 @@ export default {
       inputValue: ""
     };
   },
+
   computed: {
     ...mapState({
       tags: state => state.tab.tabsList
@@ -41,6 +44,10 @@ export default {
     }),
     handleClose(tag) {
       this.close(tag);
+    },
+    changeMenu(item) {
+      this.$router.push({ name: item.name });
+      this.$store.commit("selectMenu", item);
     }
   }
 };
@@ -49,23 +56,9 @@ export default {
 <style lang="scss" scoped>
 .tabs {
   padding: 20px;
-  el-tag {
+  .el-tag {
     margin-right: 15px;
-  }
-  .el-tag + .el-tag {
-    margin-left: 10px;
-  }
-  .button-new-tag {
-    margin-left: 10px;
-    height: 32px;
-    line-height: 30px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .input-new-tag {
-    width: 90px;
-    margin-left: 10px;
-    vertical-align: bottom;
+    cursor: pointer;
   }
 }
 </style>

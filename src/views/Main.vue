@@ -1,14 +1,14 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:38:13
- * @LastEditTime: 2020-06-19 17:18:32
+ * @LastEditTime: 2020-06-19 18:09:40
  * @Description: 
  * @FilePath: \vue-manage-system\src\views\Main.vue
 -->
 <template>
   <div class="main_container">
     <el-container style="height:100%">
-      <el-aside width="200px">
+      <el-aside width="auto">
         <common-aside></common-aside>
       </el-aside>
       <el-container>

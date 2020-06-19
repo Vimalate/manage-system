@@ -1,14 +1,19 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:46:44
- * @LastEditTime: 2020-06-19 16:37:28
+ * @LastEditTime: 2020-06-19 18:05:28
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonHeader.vue
 -->
 <template>
   <header>
     <div class="l_content">
-      <el-button type="primary" icon="el-icon-menu" size="mini"></el-button>
+      <el-button
+        type="primary"
+        icon="el-icon-menu"
+        size="mini"
+        @click="collapseMenu"
+      ></el-button>
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item :to="current.path" v-if="current">
@@ -41,6 +46,11 @@ export default {
       userImg: require("../assets/images/user.png")
     };
   },
+  methods: {
+    collapseMenu() {
+      this.$store.commit("collapseMenu");
+    }
+  },
   computed: {
     ...mapState({
       current: state => state.tab.currentMenu
@@ -66,11 +76,12 @@ header {
 <style lang="scss">
 .el-breadcrumb__item {
   .el-breadcrumb__inner {
-    color: #fff;
+    color: #666;
+    font-weight: normal;
   }
   &:last-child {
     .el-breadcrumb__inner {
-      color: #f4f4f4;
+      color: #fff;
     }
   }
 }

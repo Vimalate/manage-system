@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:47:14
- * @LastEditTime: 2020-06-19 17:20:33
+ * @LastEditTime: 2020-06-19 18:11:06
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonAside.vue
 -->
@@ -10,9 +10,10 @@
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
-      background-color="#33aef0"
+      background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      :collapse="isCollapse"
     >
       <el-menu-item
         :index="item.path"
@@ -55,7 +56,7 @@ export default {
           path: "/",
           name: "home",
           label: "首页",
-          icon: "home"
+          icon: "s-home"
         },
         {
           path: "/video",
@@ -98,6 +99,9 @@ export default {
     },
     hasChildren() {
       return this.asideMenu.filter(item => item.children);
+    },
+    isCollapse() {
+      return this.$store.state.tab.isCollapse;
     }
   },
   methods: {
@@ -114,6 +118,10 @@ export default {
   .el-menu {
     height: 100%;
     border: none;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
   }
 }
 </style>
