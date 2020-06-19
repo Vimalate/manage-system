@@ -1,7 +1,7 @@
 /*
  * @Author: Vimalakirti
  * @Date: 2020-06-18 23:34:42
- * @LastEditTime: 2020-06-19 00:39:45
+ * @LastEditTime: 2020-06-19 17:17:13
  * @Description:
  * @FilePath: \vue-manage-system\src\router\index.js
  */
@@ -12,15 +12,40 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home
-  // }
   {
     path: "/",
-    name: "About",
-    component: () => import(/* webpackChunkName: "Main" */ "../views/Main.vue")
+    component: () => import(/* webpackChunkName: "Main" */ "../views/Main.vue"),
+    children: [
+      {
+        path: "/",
+        name: "home",
+        component: () =>
+          import(/* webpackChunkName: "Main" */ "../views/Home/index.vue")
+      },
+      {
+        path: "/video",
+        name: "video",
+        component: () => import(/* webpackChunkName: "Main" */ "../views/Video")
+      },
+      {
+        path: "/user",
+        name: "user",
+        component: () =>
+          import(/* webpackChunkName: "Main" */ "../views/User/index.vue")
+      },
+      {
+        path: "/page1",
+        name: "page1",
+        component: () =>
+          import(/* webpackChunkName: "Main" */ "../views/Other/PageOne.vue")
+      },
+      {
+        path: "/page2",
+        name: "page2",
+        component: () =>
+          import(/* webpackChunkName: "Main" */ "../views/Other/PageTwo.vue")
+      }
+    ]
   }
 ];
 

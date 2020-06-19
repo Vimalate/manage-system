@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:38:13
- * @LastEditTime: 2020-06-19 00:52:40
+ * @LastEditTime: 2020-06-19 17:18:32
  * @Description: 
  * @FilePath: \vue-manage-system\src\views\Main.vue
 -->
@@ -13,7 +13,8 @@
       </el-aside>
       <el-container>
         <el-header><common-header></common-header></el-header>
-        <el-main>Main</el-main>
+        <common-tab></common-tab>
+        <el-main><router-view></router-view></el-main>
       </el-container>
     </el-container>
   </div>
@@ -26,12 +27,16 @@ export default {
   },
   components: {
     CommonHeader: () => import("../components/CommonHeader"),
-    CommonAside: () => import("../components/CommonAside")
+    CommonAside: () => import("../components/CommonAside"),
+    CommonTab: () => import("../components/CommonTab")
   }
 };
 </script>
 <style lang="scss" scoped>
 .main_container {
   height: 100%;
+  .el-header {
+    background: #333;
+  }
 }
 </style>
