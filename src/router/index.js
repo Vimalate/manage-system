@@ -1,7 +1,7 @@
 /*
  * @Author: Vimalakirti
  * @Date: 2020-06-18 23:34:42
- * @LastEditTime: 2020-06-19 17:28:07
+ * @LastEditTime: 2020-06-19 19:29:58
  * @Description:
  * @FilePath: \vue-manage-system\src\router\index.js
  */
@@ -28,7 +28,8 @@ const routes = [
       {
         path: "/video",
         name: "video",
-        component: () => import(/* webpackChunkName: "Main" */ "../views/Video")
+        component: () =>
+          import(/* webpackChunkName: "Main" */ "../views/Video/index.vue")
       },
       {
         path: "/user",
