@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-20 14:07:54
- * @LastEditTime: 2020-06-20 14:26:45
+ * @LastEditTime: 2020-06-20 15:03:25
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\Echart.vue
 -->
@@ -51,7 +51,9 @@ export default {
     },
     initChartData() {
       if (this.isAxisChart) {
+        console.log();
       } else {
+        console.log();
       }
     }
   }
