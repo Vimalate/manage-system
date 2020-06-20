@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-20 16:52:42
- * @LastEditTime: 2020-06-20 21:51:31
+ * @LastEditTime: 2020-06-20 22:05:43
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonForm.vue
 -->
@@ -26,7 +26,7 @@
       ></el-input>
       <el-select
         v-model="form[item.model]"
-        placeholder="请选择活动区域"
+        placeholder="请选择性别"
         v-if="item.type === 'select'"
       >
         <el-option
