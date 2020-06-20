@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:47:14
- * @LastEditTime: 2020-06-19 18:11:06
+ * @LastEditTime: 2020-06-20 16:43:45
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonAside.vue
 -->
@@ -15,6 +15,8 @@
       active-text-color="#ffd04b"
       :collapse="isCollapse"
     >
+      <h3 v-show="!isCollapse">前端课堂后台管理系统</h3>
+      <h3 v-show="isCollapse">小滴</h3>
       <el-menu-item
         :index="item.path"
         v-for="item in noChildren"
@@ -118,6 +120,11 @@ export default {
   .el-menu {
     height: 100%;
     border: none;
+    h3 {
+      color: #fff;
+      text-align: center;
+      line-height: 48px;
+    }
   }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
