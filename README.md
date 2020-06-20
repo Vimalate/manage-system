@@ -37,7 +37,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 虽然对项目无影响，但是看到有红的还是不舒服。
 
 在router的配置文件中（router -> index.js）加上
-```
+```js
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
