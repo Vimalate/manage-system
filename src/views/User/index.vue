@@ -1,23 +1,40 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 17:09:01
- * @LastEditTime: 2020-06-20 19:12:32
+ * @LastEditTime: 2020-06-20 22:01:53
  * @Description: 
  * @FilePath: \vue-manage-system\src\views\User\index.vue
 -->
 <template>
   <div class="manage">
+    <el-dialog
+      :title="operateType === 'add' ? '新增用户' : '更新用户'"
+      :visible.sync="isShow"
+    >
+      <common-form
+        :formLabel="operateFormLabel"
+        :form="operateForm"
+      ></common-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="isShow = false">取 消</el-button>
+        <el-button type="primary" @click="confirm">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="manage-header">
-      <el-button type="primary">+ 新增</el-button>
-      <common-form inline :formLabel="formLabel" :form="searchForm">
-        <el-button type="primary">搜索</el-button>
+      <el-button type="primary" @click="addUser">+ 新增</el-button>
+      <common-form inline :formLabel="formLabel" :form="searchFrom">
+        <el-button type="primary" @click="getList(searchFrom.keyword)"
+          >搜索</el-button
+        >
       </common-form>
     </div>
     <common-table
       :tableData="tableData"
       :tableLabel="tableLabel"
       :config="config"
-      @changePage="getList"
+      @changePage="getList()"
+      @edit="edit"
+      @del="delUser"
     ></common-table>
   </div>
 </template>
@@ -26,6 +43,11 @@
 export default {
   data() {
     return {
+      searchFrom: {
+        keyword: ""
+      },
+      isShow: false,
+      operateType: "add",
       tableData: [],
       tableLabel: [
         {
@@ -56,6 +78,47 @@ export default {
         total: 30,
         loading: false
       },
+      operateForm: {
+        name: "",
+        addr: "",
+        age: "",
+        birth: "",
+        sex: ""
+      },
+      operateFormLabel: [
+        {
+          model: "name",
+          label: "姓名"
+        },
+        {
+          model: "age",
+          label: "年龄"
+        },
+        {
+          model: "sex",
+          label: "性别",
+          type: "select",
+          opts: [
+            {
+              label: "女",
+              value: 0
+            },
+            {
+              label: "男",
+              value: 1
+            }
+          ]
+        },
+        {
+          model: "birth",
+          label: "出生日期",
+          type: "date"
+        },
+        {
+          model: "addr",
+          label: "地址"
+        }
+      ],
       searchForm: {
         keyword: ""
       },
@@ -75,6 +138,7 @@ export default {
     getList(name = "") {
       this.config.loading = true;
       // 搜索时，页码需要设置为1，才能正确返回数据，因为数据是从第一页开始返回的
+      console.log("name" + name);
       name ? (this.config.page = 1) : "";
       this.$http
         .get("/api/user/getUser", {
@@ -91,6 +155,62 @@ export default {
           console.log(this.tableData);
           this.config.total = res.data.count;
           this.config.loading = false;
+        });
+    },
+    edit(row) {
+      this.operateType = "edit";
+      this.isShow = true;
+      this.operateForm = row;
+      console.log(row);
+    },
+    addUser() {
+      this.operateForm = {};
+      this.operateType = "add";
+      this.isShow = true;
+    },
+    confirm() {
+      if (this.operateType === "edit") {
+        this.$http.post("/user/edit", this.operateForm).then(res => {
+          console.log(res.data);
+          this.isShow = false;
+          this.getList();
+        });
+      } else {
+        this.$http.post("/api/user/add", this.operateForm).then(res => {
+          console.log(res.data);
+          this.isShow = false;
+          this.getList();
+        });
+      }
+    },
+    delUser(row) {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          let id = row.id;
+          this.$http
+            .get("/api/user/del", {
+              params: {
+                id
+              }
+            })
+            .then(res => {
+              console.log(res.data);
+              this.$message({
+                type: "success",
+                message: "删除成功!"
+              });
+              this.getList();
+            });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除"
+          });
         });
     }
   },

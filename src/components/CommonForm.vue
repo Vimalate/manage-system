@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-20 16:52:42
- * @LastEditTime: 2020-06-20 17:43:19
+ * @LastEditTime: 2020-06-20 21:51:31
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonForm.vue
 -->
@@ -14,7 +14,7 @@
     class="demo-ruleForm"
   >
     <el-form-item
-      label="年龄"
+      :label="item.label"
       prop="age"
       v-for="(item, index) in formLabel"
       :key="index"
@@ -22,7 +22,6 @@
       <el-input
         v-model="form[item.model]"
         :placeholder="'请输入' + item.label"
-        autocomplete="off"
         v-if="!item.type"
       ></el-input>
       <el-select
@@ -37,10 +36,15 @@
           :value="item.value"
         ></el-option>
       </el-select>
-      <el-switch
+      <el-switch v-model="form[item.model]" v-if="item.type === 'switch'">
+      </el-switch>
+      <el-date-picker
         v-model="form[item.model]"
-        v-if="item.type === 'switch'"
-      ></el-switch>
+        type="date"
+        placeholder="选择日期"
+        v-if="item.type === 'date'"
+      >
+      </el-date-picker>
     </el-form-item>
     <el-form-item>
       <slot></slot>

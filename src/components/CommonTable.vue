@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-20 16:53:27
- * @LastEditTime: 2020-06-20 19:22:35
+ * @LastEditTime: 2020-06-20 21:20:37
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonTable.vue
 -->
@@ -62,8 +62,12 @@ export default {
     return {};
   },
   methods: {
-    handleEdit() {},
-    handleDelete() {},
+    handleEdit(row) {
+      this.$emit("edit", row);
+    },
+    handleDelete(row) {
+      this.$emit("del", row);
+    },
     changePage(page) {
       this.$emit("changePage", page);
     }
