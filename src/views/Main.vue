@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:38:13
- * @LastEditTime: 2020-06-19 18:09:40
+ * @LastEditTime: 2020-06-20 18:54:28
  * @Description: 
  * @FilePath: \vue-manage-system\src\views\Main.vue
 -->
@@ -37,6 +37,9 @@ export default {
   height: 100%;
   .el-header {
     background: #333;
+  }
+  .el-main {
+    padding-top: 0;
   }
 }
 </style>
