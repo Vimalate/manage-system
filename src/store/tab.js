@@ -66,7 +66,7 @@ export default {
         state.tabsList = tagList;
       }
     },
-    closeTab(state, val) {
+    closetab(state, val) {
       let result = state.tabsList.findIndex(item => item.name === val.name);
       state.tabsList.splice(result, 1);
       Cookie.set("tagList", JSON.stringify(state.tabsList));

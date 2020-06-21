@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 16:38:22
- * @LastEditTime: 2020-06-19 18:00:59
+ * @LastEditTime: 2020-06-21 21:03:01
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonTab.vue
 -->
@@ -40,10 +40,11 @@ export default {
   },
   methods: {
     ...mapMutations({
-      close: "closetabs"
+      close: "closetab"
     }),
     handleClose(tag) {
       this.close(tag);
+      this.$router.go(-1);
     },
     changeMenu(item) {
       this.$router.push({ name: item.name });

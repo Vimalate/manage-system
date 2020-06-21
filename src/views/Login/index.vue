@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-21 18:50:37
- * @LastEditTime: 2020-06-21 19:43:51
+ * @LastEditTime: 2020-06-21 20:41:28
  * @Description: 
  * @FilePath: \vue-manage-system\src\views\Login\index.vue
 -->
@@ -45,7 +45,7 @@ export default {
         if (res.code === 20000) {
           this.$store.commit("clearMenu");
           this.$store.commit("setMenu", res.data.menu);
-          // this.$store.commit("setToken", res.data.token);
+          this.$store.commit("setToken", res.data.token);
           this.$store.commit("addMenu", this.$router);
           this.$router.push({ name: "home" });
         } else {

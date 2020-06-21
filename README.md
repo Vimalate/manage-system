@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-18 23:35:21
- * @LastEditTime: 2020-06-20 18:00:33
+ * @LastEditTime: 2020-06-21 21:11:59
  * @Description: 
  * @FilePath: \vue-manage-system\README.md
 --> 
@@ -55,3 +55,13 @@ VueRouter.prototype.push = function push(location) {
 - ci：更改持续集成软件的配置文件和package中的scripts命令，例如scopes: Travis, Circle等
 - chore：变更构建流程或辅助工具
 - revert：代码回退
+
+## 组件封装思路
+判断基本类型
+  哪些写死
+  哪些传进来
+扩展
+  自定义事件，判断传出参数
+  插槽扩展
+优化
+  提高适应性(v-if,v-show)

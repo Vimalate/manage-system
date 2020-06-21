@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:46:44
- * @LastEditTime: 2020-06-19 18:05:28
+ * @LastEditTime: 2020-06-21 20:44:46
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonHeader.vue
 -->
@@ -31,7 +31,7 @@
         </span>
         <el-dropdown-menu slot="dropdown" size="mini">
           <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item>退出</el-dropdown-item>
+          <el-dropdown-item @click.native="logOut">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -49,6 +49,12 @@ export default {
   methods: {
     collapseMenu() {
       this.$store.commit("collapseMenu");
+    },
+    logOut() {
+      this.$store.commit("clearToken");
+      this.$store.commit("clearMenu");
+      // 刷新
+      location.reload();
     }
   },
   computed: {
