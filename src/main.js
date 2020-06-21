@@ -1,7 +1,7 @@
 /*
  * @Author: Vimalakirti
  * @Date: 2020-06-18 23:34:42
- * @LastEditTime: 2020-06-19 19:19:33
+ * @LastEditTime: 2020-06-21 19:50:56
  * @Description:
  * @FilePath: \vue-manage-system\src\main.js
  */
@@ -23,5 +23,11 @@ Vue.prototype.$http = http;
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  // created() {
+  //   store.commit("addMenu", router);
+  // },
+  created() {
+    store.commit("addMenu", router);
+  }
 }).$mount("#app");

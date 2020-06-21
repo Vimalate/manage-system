@@ -16,21 +16,21 @@ export default {
                 name: "home",
                 label: "首页",
                 icon: "s-home",
-                url: "Home/Home"
+                url: "Home/index"
               },
               {
                 path: "/video",
                 name: "video",
                 label: "视频管理页",
                 icon: "video-play",
-                url: "VideoManage/VideoManage"
+                url: "Video/index"
               },
               {
                 path: "/user",
                 name: "user",
                 label: "用户管理页",
                 icon: "user",
-                url: "UserManage/UserManage"
+                url: "User/index"
               },
               {
                 label: "其他",
@@ -67,14 +67,14 @@ export default {
                 name: "home",
                 label: "首页",
                 icon: "s-home",
-                url: "Home/Home"
+                url: "Home/index"
               },
               {
                 path: "/video",
                 name: "video",
                 label: "视频管理页",
                 icon: "video-play",
-                url: "VideoManage/VideoManage"
+                url: "Video/index"
               }
             ],
             token: Mock.Random.guid(),

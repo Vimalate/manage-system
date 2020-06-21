@@ -1,7 +1,7 @@
 <!--
  * @Author: Vimalakirti
  * @Date: 2020-06-19 00:47:14
- * @LastEditTime: 2020-06-20 16:43:45
+ * @LastEditTime: 2020-06-21 20:25:43
  * @Description: 
  * @FilePath: \vue-manage-system\src\components\CommonAside.vue
 -->
@@ -27,13 +27,13 @@
         <span slot="title">{{ item.label }}</span>
       </el-menu-item>
       <el-submenu
-        :index="item.path"
+        :index="item.label"
         v-for="(item, index) in hasChildren"
         :key="index"
       >
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>{{ item.label }}</span>
+          <i :class="'el-icon-' + item.icon"></i>
+          <span slot="title">{{ item.label }}</span>
         </template>
         <el-menu-item-group>
           <el-menu-item
@@ -41,8 +41,10 @@
             v-for="(subItem, index) in item.children"
             :key="index"
             @click="clickMenu(subItem)"
-            >{{ subItem.label }}</el-menu-item
           >
+            <i :class="'el-icon-' + subItem.icon"></i>
+            <span slot="title">{{ subItem.label }}</span>
+          </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -97,13 +99,16 @@ export default {
   },
   computed: {
     noChildren() {
-      return this.asideMenu.filter(item => !item.children);
+      return this.menu.filter(item => !item.children);
     },
     hasChildren() {
-      return this.asideMenu.filter(item => item.children);
+      return this.menu.filter(item => item.children);
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse;
+    },
+    menu() {
+      return this.$store.state.tab.menu;
     }
   },
   methods: {
